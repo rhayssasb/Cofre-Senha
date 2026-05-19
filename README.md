@@ -33,7 +33,7 @@ banco;cpf123;Vhqkd@Vhjxud99
 
 ## 🗂️ Estrutura do Projeto
 
-```
+
 cofre-senhas/
 ├── main.c        # Menu principal (loop + switch-case)
 ├── cofre.c       # Implementação de todas as funções
@@ -42,7 +42,7 @@ cofre-senhas/
 ├── cofre.txt     # Banco de dados das credenciais (gerado em runtime)
 ├── .gitignore
 └── README.md
-```
+
 
 ---
 
@@ -51,12 +51,11 @@ cofre-senhas/
 ### Com Make (recomendado)
 ```bash
 make
-```
+
 
 ### Manualmente com GCC
-```bash
-gcc -Wall -Wextra -g -o cofre main.c cofre.c
-```
+bash
+
 
 ---
 
@@ -70,7 +69,6 @@ gcc -Wall -Wextra -g -o cofre main.c cofre.c
 
 ## 🖥️ Exemplo de Uso
 
-```
   ╔══════════════════════════════════════════╗
   ║       COFRE DE SENHAS - Cifra de Cesar   ║
   ╚══════════════════════════════════════════╝
@@ -86,28 +84,9 @@ gcc -Wall -Wextra -g -o cofre main.c cofre.c
   │  5. Remover credencial      │
   │  6. Salvar e sair           │
   └─────────────────────────────┘
-```
 
-**Adicionando uma senha:**
-```
-Opcao: 1
-Servico: gmail
-Usuario / E-mail: joao@gmail.com
-Senha (sera cifrada antes de salvar): MinhaS3nh@
-[OK] Credencial adicionada! Senha armazenada cifrada.
-```
 
-**Decifrando:**
-```
-Opcao: 4
-[... lista as credenciais com senhas cifradas ...]
-Numero da credencial para decifrar: 1
-  Servico  : gmail
-  Usuario  : joao@gmail.com
-  Senha    : MinhaS3nh@  <<< SENHA ORIGINAL >>>
-```
 
----
 
 ## ✅ Requisitos Obrigatórios Atendidos
 
@@ -125,7 +104,7 @@ Numero da credencial para decifrar: 1
 
 ## 🔁 Como a Recursão Funciona
 
-```c
+c
 void cifrar_recursivo(char *src, char *dst, int shift, int i) {
     if (src[i] == '\0') {       // CASO BASE: fim da string
         dst[i] = '\0';
@@ -137,7 +116,7 @@ void cifrar_recursivo(char *src, char *dst, int shift, int i) {
 
     cifrar_recursivo(src, dst, shift, i + 1); // CASO RECURSIVO
 }
-```
+
 
 A função avança índice a índice pela string. Para "abc" com SHIFT=3:
 - `i=0` → 'a' vira 'd'
@@ -145,7 +124,6 @@ A função avança índice a índice pela string. Para "abc" com SHIFT=3:
 - `i=2` → 'c' vira 'f'
 - `i=3` → `'\0'` → caso base, encerra
 
----
 
 ## 😓 Dificuldades e Como Foram Superadas
 
