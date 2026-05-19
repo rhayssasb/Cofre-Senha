@@ -9,8 +9,7 @@
 
 ## 👥 Integrantes
 
-| Nome |
-|---|---|
+
 | [Guilherme] | [Karollyne] |
 | [Lisa] | [Maria Clara] |
 | [Rhayssa] |
@@ -142,6 +141,4 @@ A função avança índice a índice pela string. Para "abc" com SHIFT=3:
 
 ---
 
-## 🔗 Repositório
 
-[https://github.com/SEU_USUARIO/pif-tema-01-grupoNN](https://github.com/SEU_USUARIO/pif-tema-01-grupoNN)
