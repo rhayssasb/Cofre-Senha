@@ -9,11 +9,11 @@
 
 ## 👥 Integrantes
 
-| Nome Completo | Matrícula |
+| Nome |
 |---|---|
-| [Nome do integrante 1] | [Matrícula] |
-| [Nome do integrante 2] | [Matrícula] |
-| [Nome do integrante 3] | [Matrícula] |
+| [Guilherme] | [Karollyne] |
+| [Lisa] | [Maria Clara] |
+| [Rhayssa] |
 
 ---
 
