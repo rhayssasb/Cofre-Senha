@@ -1,64 +1,105 @@
 # 🔐 Cofre de Senhas com Cifra de César
 
-**Disciplina:** Programação Imperativa e Funcional  
-**Professor:** Ronierison Maciel  
-**Tema sorteado:** Tema 1  
-**Data:** 2026
+Projeto desenvolvido para a disciplina de **Programação Imperativa e Funcional**, utilizando linguagem C e conceitos fundamentais como:
+
+- Structs
+- Arquivos (`fopen` / `fclose`)
+- Recursividade
+- Modularização
+- Alocação dinâmica
+- Manipulação de strings
+
+---
+
+## 📚 Informações Acadêmicas
+
+- **Disciplina:** Programação Imperativa e Funcional  
+- **Professor:** Ronierison Maciel  
+- **Tema Sorteado:** Tema 1  
+- **Ano:** 2026  
 
 ---
 
 ## 👥 Integrantes
 
-
-| [Guilherme] | [Karollyne] |
-| [Lisa] | [Maria Clara] |
-| [Rhayssa] |
+- Guilherme
+- Karollyne
+- Lisa
+- Maria Clara
+- Rhayssa
 
 ---
 
 ## 📋 Descrição do Projeto
 
-Gerenciador de senhas de linha de comando que armazena credenciais de diversos serviços (Gmail, Instagram, banco, etc.) com proteção via **Cifra de César** com deslocamento configurável pelo `#define SHIFT`.
+O projeto consiste em um **gerenciador de senhas via terminal**, capaz de armazenar credenciais de diferentes serviços, como:
 
-As senhas **nunca são armazenadas em texto puro** no arquivo `cofre.txt`. Ao abrir o arquivo em qualquer editor de texto, as senhas aparecem embaralhadas. A senha original só é exibida quando o usuário escolhe explicitamente a opção "Decifrar".
+- Gmail
+- Instagram
+- Bancos
+- Redes sociais
+- Plataformas digitais
 
-Exemplo de como o cofre.txt é salvo:
+As senhas são protegidas utilizando a técnica da **Cifra de César**, com deslocamento definido pela constante:
+
+```c
+#define SHIFT 3
 ```
+
+Isso significa que as senhas **não ficam salvas em texto puro** no arquivo `cofre.txt`.
+
+---
+
+## 🔒 Exemplo de Senhas Cifradas
+
+Exemplo de como as informações ficam armazenadas no arquivo:
+
+```txt
 gmail;usuario@email.com;Khoor#Pxqgr
 banco;cpf123;Vhqkd@Vhjxud99
 ```
+
+Mesmo abrindo o arquivo manualmente, o usuário verá apenas as versões cifradas das senhas.
 
 ---
 
 ## 🗂️ Estrutura do Projeto
 
-
+```txt
 cofre-senhas/
-├── main.c        # Menu principal (loop + switch-case)
-├── cofre.c       # Implementação de todas as funções
-├── cofre.h       # Header: structs, #defines, protótipos
-├── Makefile      # Compilação automatizada
-├── cofre.txt     # Banco de dados das credenciais (gerado em runtime)
+│
+├── main.c        -> Menu principal e fluxo do sistema
+├── cofre.c       -> Implementação das funções
+├── cofre.h       -> Structs, defines e protótipos
+├── Makefile      -> Compilação automatizada
+├── cofre.txt     -> Arquivo de armazenamento das credenciais
 ├── .gitignore
 └── README.md
-
+```
 
 ---
 
 ## ⚙️ Como Compilar
 
-### Com Make (recomendado)
+### ▶️ Usando Makefile (Recomendado)
+
 ```bash
 make
+```
 
+---
 
-### Manualmente com GCC
-bash
+### ▶️ Compilando Manualmente com GCC
 
+```bash
+gcc -Wall -Wextra -g main.c cofre.c -o cofre
+```
 
 ---
 
 ## ▶️ Como Executar
+
+Após compilar:
 
 ```bash
 ./cofre
@@ -68,77 +109,187 @@ bash
 
 ## 🖥️ Exemplo de Uso
 
-  ╔══════════════════════════════════════════╗
-  ║       COFRE DE SENHAS - Cifra de Cesar   ║
-  ╚══════════════════════════════════════════╝
+```txt
+╔══════════════════════════════════════════╗
+║      COFRE DE SENHAS - Cifra de César   ║
+╚══════════════════════════════════════════╝
+
 [INFO] 3 credencial(is) carregada(s) do cofre.
 
-  ┌─────────────────────────────┐
-  │        MENU PRINCIPAL       │
-  ├─────────────────────────────┤
-  │  1. Adicionar credencial    │
-  │  2. Listar (cifradas)       │
-  │  3. Buscar por servico      │
-  │  4. Decifrar credencial     │
-  │  5. Remover credencial      │
-  │  6. Salvar e sair           │
-  └─────────────────────────────┘
-
-
-
-
-## ✅ Requisitos Obrigatórios Atendidos
-
-| Requisito | Como foi implementado | Arquivo / Linha |
-|---|---|---|
-| **struct** | `typedef struct { char servico[]; ... } Credencial` definida em `.h` | `cofre.h`, linha 16 |
-| **fopen/fclose** | `carregar_cofre()` lê com `"r"` e `salvar_cofre()` escreve com `"w"` | `cofre.c`, linhas 55 e 79 |
-| **switch-case** | Menu principal com 6 opções dentro de loop `do-while` | `main.c`, linha 48 |
-| **Função recursiva** | `cifrar_recursivo()` e `decifrar_recursivo()` — processam string char a char | `cofre.c`, linhas 28 e 47 |
-| **Modularização** | `cofre.h` com `#ifndef`, `#define`, protótipos + `cofre.c` com implementação | `cofre.h` e `cofre.c` |
-| **Compila sem warnings** | `gcc -Wall -Wextra -g` — zero warnings | Makefile |
-| **malloc/free (bônus)** | `malloc(MAX_CREDENCIAIS * sizeof(Credencial))` no início, `free()` ao sair | `main.c`, linhas 28 e 68 |
+┌─────────────────────────────┐
+│       MENU PRINCIPAL        │
+├─────────────────────────────┤
+│ 1. Adicionar credencial     │
+│ 2. Listar (cifradas)        │
+│ 3. Buscar por serviço       │
+│ 4. Decifrar credencial      │
+│ 5. Remover credencial       │
+│ 6. Salvar e sair            │
+└─────────────────────────────┘
+```
 
 ---
 
-## 🔁 Como a Recursão Funciona
+# ✅ Requisitos Obrigatórios Atendidos
 
-c
+| Requisito | Implementação |
+|---|---|
+| Struct | Uso da struct `Credencial` |
+| fopen / fclose | Leitura e escrita no `cofre.txt` |
+| Switch-case | Menu principal interativo |
+| Recursividade | Funções de cifra e decifra |
+| Modularização | Separação em `.h` e `.c` |
+| Sem warnings | Compilação com `-Wall -Wextra` |
+| malloc/free (bônus) | Alocação dinâmica do cofre |
+
+---
+
+# 🔁 Como a Recursão Funciona
+
+A cifra percorre a string caractere por caractere utilizando recursividade.
+
+```c
 void cifrar_recursivo(char *src, char *dst, int shift, int i) {
-    if (src[i] == '\0') {       // CASO BASE: fim da string
+    if (src[i] == '\0') {
         dst[i] = '\0';
         return;
     }
-    // Cifra o caractere atual
+
     char base = islower(src[i]) ? 'a' : 'A';
+
     dst[i] = base + (src[i] - base + shift) % 26;
 
-    cifrar_recursivo(src, dst, shift, i + 1); // CASO RECURSIVO
+    cifrar_recursivo(src, dst, shift, i + 1);
 }
-
-
-A função avança índice a índice pela string. Para "abc" com SHIFT=3:
-- `i=0` → 'a' vira 'd'
-- `i=1` → 'b' vira 'e'  
-- `i=2` → 'c' vira 'f'
-- `i=3` → `'\0'` → caso base, encerra
-
-
-## 😓 Dificuldades e Como Foram Superadas
-
-- **Overflow no wrap do alfabeto**: ao cifrar 'z' com SHIFT=3, precisávamos voltar para 'c'. Resolvido com `(c - base + shift) % 26`.
-- **Buffer sujo após scanf**: misturar `scanf` com `fgets` causava leituras vazias. Resolvido limpando o buffer com um `while (getchar() != '\n')`.
-- **Formato do arquivo com strtok**: `strtok` modifica a string original; copiamos para um buffer temporário antes de usar.
+```
 
 ---
 
-## 🎨 Decisões de Design
+## 📌 Exemplo
 
-- **Por que essa struct?** Os três campos (`servico`, `usuario`, `senha_cifrada`) representam exatamente o que um gerenciador de senhas precisa: onde usar, com qual login, e qual senha.
-- **Por que recursão na cifra?** É a aplicação mais natural — processar uma string caractere a caractere é um problema que se reduz a si mesmo a cada passo.
-- **Por que salvar após cada alteração?** Evita perda de dados se o programa travar; o arquivo sempre reflete o estado atual.
-- **Por que malloc?** Permite que o limite `MAX_CREDENCIAIS` seja ajustado facilmente, e demonstra o uso correto de alocação dinâmica com `free` ao encerrar.
+Com:
+
+```txt
+abc
+```
+
+E:
+
+```c
+SHIFT = 3
+```
+
+O resultado será:
+
+```txt
+def
+```
+
+Funcionamento:
+
+- `a → d`
+- `b → e`
+- `c → f`
+
+A função encerra quando encontra:
+
+```c
+'\0'
+```
+
+Que representa o final da string.
 
 ---
 
+# 😓 Dificuldades Encontradas
 
+## 🔹 Rotação do alfabeto
+
+Problema:
+
+```txt
+z + 3
+```
+
+Precisava voltar para:
+
+```txt
+c
+```
+
+Solução:
+
+```c
+(c - base + shift) % 26
+```
+
+---
+
+## 🔹 Problemas com scanf e fgets
+
+Misturar `scanf` com `fgets` causava leituras vazias.
+
+Solução:
+
+```c
+while (getchar() != '\n');
+```
+
+Para limpar o buffer do teclado.
+
+---
+
+## 🔹 Uso do strtok
+
+A função `strtok()` modifica a string original.
+
+Solução:
+- copiar a linha para um buffer temporário antes de separar os campos.
+
+---
+
+# 🎨 Decisões de Design
+
+## 📌 Uso da Struct
+
+A struct `Credencial` organiza:
+
+- serviço
+- usuário
+- senha cifrada
+
+Facilitando o armazenamento e manipulação das credenciais.
+
+---
+
+## 📌 Uso da Recursão
+
+A recursão foi escolhida por combinar naturalmente com o processamento de strings caractere por caractere.
+
+---
+
+## 📌 Salvamento Automático
+
+As alterações são salvas imediatamente para evitar perda de dados em caso de falha no programa.
+
+---
+
+## 📌 Uso de malloc/free
+
+A alocação dinâmica permite maior flexibilidade e demonstra o gerenciamento correto de memória em C.
+
+---
+
+# 🚀 Tecnologias Utilizadas
+
+- Linguagem C
+- GCC
+- Makefile
+- Manipulação de arquivos
+- Terminal / CLI
+
+---
+
+# 📄 Licença
+
+Projeto acadêmico desenvolvido exclusivamente para fins educacionais.
