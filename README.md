@@ -201,53 +201,6 @@ Que representa o final da string.
 
 ---
 
-# 😓 Dificuldades Encontradas
-
-## 🔹 Rotação do alfabeto
-
-Problema:
-
-```txt
-z + 3
-```
-
-Precisava voltar para:
-
-```txt
-c
-```
-
-Solução:
-
-```c
-(c - base + shift) % 26
-```
-
----
-
-## 🔹 Problemas com scanf e fgets
-
-Misturar `scanf` com `fgets` causava leituras vazias.
-
-Solução:
-
-```c
-while (getchar() != '\n');
-```
-
-Para limpar o buffer do teclado.
-
----
-
-## 🔹 Uso do strtok
-
-A função `strtok()` modifica a string original.
-
-Solução:
-- copiar a linha para um buffer temporário antes de separar os campos.
-
----
-
 # 🎨 Decisões de Design
 
 ## 📌 Uso da Struct
