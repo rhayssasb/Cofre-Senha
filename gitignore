@@ -1,0 +1,11 @@
+# Binarios compilados
+cofre
+*.exe
+*.out
+*.o
+
+# Arquivos temporarios do editor
+*.swp
+*.swo
+*~
+.DS_Store
