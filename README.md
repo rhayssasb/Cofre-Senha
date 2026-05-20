@@ -99,15 +99,6 @@ Cofre-Senha/
 
 ---
 
-# ⚙️ Como Compilar
-
-## ▶️ Compilação com GCC
-
-```bash
-gcc -std=c11 -Wall -Wextra -pedantic cofre_senha.c -o cofre_senha
-```
-
----
 
 # ▶️ Como Executar
 
