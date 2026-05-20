@@ -1,58 +1,81 @@
 # 🔐 Cofre de Senhas com Cifra de César
 
-Projeto desenvolvido para a disciplina de **Programação Imperativa e Funcional**, utilizando linguagem C e conceitos fundamentais como:
-
-- Structs
-- Arquivos (`fopen` / `fclose`)
-- Recursividade
-- Modularização
-- Alocação dinâmica
-- Manipulação de strings
+<p align="center">
+  Projeto desenvolvido em <b>Linguagem C</b> para a disciplina de <b>Programação Imperativa e Funcional</b>.
+</p>
 
 ---
 
-## 📚 Informações Acadêmicas
+## 📚 Conceitos Aplicados
 
-- **Disciplina:** Programação Imperativa e Funcional  
-- **Professor:** Ronierison Maciel  
-- **Tema Sorteado:** Tema 1  
-- **Ano:** 2026  
+Durante o desenvolvimento do projeto, foram utilizados os seguintes conceitos fundamentais da linguagem C:
 
----
-
-## 👥 Integrantes
-
-- Guilherme
-- Karollyne
-- Lisa
-- Maria Clara
-- Rhayssa
+* ✅ `struct`
+* ✅ Manipulação de arquivos com `fopen` e `fclose`
+* ✅ Recursividade
+* ✅ Alocação dinâmica (`malloc` e `free`)
+* ✅ Manipulação de strings
+* ✅ Persistência de dados
+* ✅ Estruturas de repetição e `switch-case`
 
 ---
 
-## 📋 Descrição do Projeto
+# 🎓 Informações Acadêmicas
 
-O projeto consiste em um **gerenciador de senhas via terminal**, capaz de armazenar credenciais de diferentes serviços, como:
+| Informação        | Detalhe                            |
+| ----------------- | ---------------------------------- |
+| **Disciplina**    | Programação Imperativa e Funcional |
+| **Professor**     | Ronierison Maciel                  |
+| **Tema Sorteado** | Tema 1                             |
+| **Ano**           | 2026                               |
 
-- Gmail
-- Instagram
-- Bancos
-- Redes sociais
-- Plataformas digitais
+---
 
-As senhas são protegidas utilizando a técnica da **Cifra de César**, com deslocamento definido pela constante:
+# 👥 Integrantes
+
+* Guilherme
+* Karollyne
+* Lisa
+* Maria Clara
+* Rhayssa
+
+---
+
+# 📋 Sobre o Projeto
+
+O projeto consiste em um **gerenciador de senhas via terminal**, desenvolvido em linguagem C, capaz de armazenar credenciais de diferentes serviços, como:
+
+* Gmail
+* Instagram
+* Bancos
+* Redes sociais
+* Plataformas digitais
+
+As senhas são protegidas utilizando a técnica da **Cifra de César**, impedindo que sejam armazenadas em texto puro no arquivo.
+
+---
+
+# 🔒 Cifra Utilizada
+
+O deslocamento da cifra é definido pela constante:
 
 ```c
 #define SHIFT 3
 ```
 
-Isso significa que as senhas **não ficam salvas em texto puro** no arquivo `cofre.txt`.
+Exemplo de funcionamento:
+
+```txt
+abc → def
+```
+
+Cada letra é deslocada 3 posições no alfabeto.
 
 ---
 
-## 🔒 Exemplo de Senhas Cifradas
+# 💾 Exemplo do Arquivo `cofre.txt`
 
-Exemplo de como as informações ficam armazenadas no arquivo:
+As informações ficam armazenadas da seguinte forma:
 
 ```txt
 gmail;usuario@email.com;Khoor#Pxqgr
@@ -61,7 +84,39 @@ banco;cpf123;Vhqkd@Vhjxud99
 
 Mesmo abrindo o arquivo manualmente, o usuário verá apenas as versões cifradas das senhas.
 
-## 🖥️ Exemplo de Uso
+---
+
+# 🗂️ Estrutura do Projeto
+
+```txt
+Cofre-Senha/
+│
+├── cofre_senha.c   -> Programa principal
+├── cofre.txt       -> Banco de dados das credenciais
+├── README.md       -> Documentação do projeto
+└── .vscode/        -> Configurações do editor
+```
+
+---
+
+
+# ▶️ Como Executar
+
+## Linux / macOS
+
+```bash
+./cofre_senha
+```
+
+## Windows
+
+```bash
+cofre_senha.exe
+```
+
+---
+
+# 🖥️ Exemplo de Uso
 
 ```txt
 ╔══════════════════════════════════════════╗
@@ -86,15 +141,14 @@ Mesmo abrindo o arquivo manualmente, o usuário verá apenas as versões cifrada
 
 # ✅ Requisitos Obrigatórios Atendidos
 
-| Requisito | Implementação |
-|---|---|
-| Struct | Uso da struct `Credencial` |
-| fopen / fclose | Leitura e escrita no `cofre.txt` |
-| Switch-case | Menu principal interativo |
-| Recursividade | Funções de cifra e decifra |
-| Modularização | Separação em `.h` e `.c` |
-| Sem warnings | Compilação com `-Wall -Wextra` |
-| malloc/free (bônus) | Alocação dinâmica do cofre |
+| Requisito            | Implementação                            |
+| -------------------- | ---------------------------------------- |
+| ✅ `struct`           | Uso da struct `Credencial`               |
+| ✅ `fopen` / `fclose` | Leitura e escrita no arquivo `cofre.txt` |
+| ✅ `switch-case`      | Menu principal interativo                |
+| ✅ Recursividade      | Funções de cifra e decifra               |
+| ✅ Persistência       | Salvamento e carregamento automático     |
+| ✅ Alocação dinâmica  | Uso de `malloc` e `free`                 |
 
 ---
 
@@ -109,9 +163,15 @@ void cifrar_recursivo(char *src, char *dst, int shift, int i) {
         return;
     }
 
-    char base = islower(src[i]) ? 'a' : 'A';
+    char c = src[i];
 
-    dst[i] = base + (src[i] - base + shift) % 26;
+    if (isalpha((unsigned char)c)) {
+        char base = islower((unsigned char)c) ? 'a' : 'A';
+
+        dst[i] = (char)(base + (c - base + shift) % 26);
+    } else {
+        dst[i] = c;
+    }
 
     cifrar_recursivo(src, dst, shift, i + 1);
 }
@@ -119,21 +179,21 @@ void cifrar_recursivo(char *src, char *dst, int shift, int i) {
 
 ---
 
-## 📌 Exemplo
+# 📌 Exemplo da Recursão
 
-Com:
+Entrada:
 
 ```txt
 abc
 ```
 
-E:
+Com:
 
 ```c
 SHIFT = 3
 ```
 
-O resultado será:
+Saída:
 
 ```txt
 def
@@ -141,9 +201,9 @@ def
 
 Funcionamento:
 
-- `a → d`
-- `b → e`
-- `c → f`
+* `a → d`
+* `b → e`
+* `c → f`
 
 A função encerra quando encontra:
 
@@ -157,43 +217,43 @@ Que representa o final da string.
 
 # 🎨 Decisões de Design
 
-## 📌 Uso da Struct
+### 📌 Uso da Struct
 
-A struct `Credencial` organiza:
+A `struct Credencial` organiza:
 
-- serviço
-- usuário
-- senha cifrada
+* serviço
+* usuário
+* senha cifrada
 
-Facilitando o armazenamento e manipulação das credenciais.
+Facilitando a manipulação dos dados.
 
 ---
 
-## 📌 Uso da Recursão
+### 📌 Uso da Recursão
 
 A recursão foi escolhida por combinar naturalmente com o processamento de strings caractere por caractere.
 
 ---
 
-## 📌 Salvamento Automático
+### 📌 Salvamento Automático
 
-As alterações são salvas imediatamente para evitar perda de dados em caso de falha no programa.
+As alterações são salvas automaticamente para evitar perda de dados.
 
 ---
 
-## 📌 Uso de malloc/free
+### 📌 Uso de Alocação Dinâmica
 
-A alocação dinâmica permite maior flexibilidade e demonstra o gerenciamento correto de memória em C.
+A utilização de `malloc` e `free` permite um gerenciamento mais flexível da memória.
 
 ---
 
 # 🚀 Tecnologias Utilizadas
 
-- Linguagem C
-- GCC
-- Makefile
-- Manipulação de arquivos
-- Terminal / CLI
+* Linguagem C
+* GCC
+* Manipulação de arquivos
+* Terminal / CLI
+* Estruturas de dados básicas
 
 ---
 
