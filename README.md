@@ -61,52 +61,6 @@ banco;cpf123;Vhqkd@Vhjxud99
 
 Mesmo abrindo o arquivo manualmente, o usuário verá apenas as versões cifradas das senhas.
 
----
-
-## 🗂️ Estrutura do Projeto
-
-```txt
-cofre-senhas/
-│
-├── main.c        -> Menu principal e fluxo do sistema
-├── cofre.c       -> Implementação das funções
-├── cofre.h       -> Structs, defines e protótipos
-├── Makefile      -> Compilação automatizada
-├── cofre.txt     -> Arquivo de armazenamento das credenciais
-├── .gitignore
-└── README.md
-```
-
----
-
-## ⚙️ Como Compilar
-
-### ▶️ Usando Makefile (Recomendado)
-
-```bash
-make
-```
-
----
-
-### ▶️ Compilando Manualmente com GCC
-
-```bash
-gcc -Wall -Wextra -g main.c cofre.c -o cofre
-```
-
----
-
-## ▶️ Como Executar
-
-Após compilar:
-
-```bash
-./cofre
-```
-
----
-
 ## 🖥️ Exemplo de Uso
 
 ```txt
